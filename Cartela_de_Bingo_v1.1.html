@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+</head>
+
+<body>
+
+    <h1>Cartela de Bingo</h1>
+    <h3>Observações:</h3>
+    <h4>1º - Para selecionar 1 número, toque 1 vez no quadrado desejado.</h4>
+    <h4>2º - Para Remover a seleção indesejada de 1 número, toque 2 vezes no quadrado desejado.</h4>
+    <h4>3º - Para gerar uma nova cartela, toque no botão: Gerar Nova Cartela.</h4>
+    <h5>Boa divesão!</h5>
+
+    <!-- Table  -->
+    <table width="330" height="250" border="1px">
+        <!-- Table head -->
+        <thead>
+            <tr>
+                <th>B</th>
+                <th>I</th>
+                <th>N</th>
+                <th>G</th>
+                <th>O</th>
+            </tr>
+        </thead>
+        <!-- Table head -->
+
+        <!-- Table body -->
+        <tbody>
+            <tr align="center">
+                <td class="b1" ondblclick = "mudaParaBranco(b1)" onclick ="mudaParaVerde(b1)" >Número X</td>
+                <td class="i1" ondblclick = "mudaParaBranco(i1)" onclick ="mudaParaVerde(i1)" >Número X</td>
+                <td class="n1" ondblclick = "mudaParaBranco(n1)" onclick ="mudaParaVerde(n1)" >Número X</td>
+                <td class="g1" ondblclick = "mudaParaBranco(g1)" onclick ="mudaParaVerde(g1)" >Número X</td>
+                <td class="o1" ondblclick = "mudaParaBranco(o1)" onclick ="mudaParaVerde(o1)" >Número X</td>
+            </tr>  
+            <tr align="center">
+                <td class="b2" ondblclick = "mudaParaBranco(b2)" onclick ="mudaParaVerde(b2)" >Número X</td>
+                <td class="i2" ondblclick = "mudaParaBranco(i2)" onclick ="mudaParaVerde(i2)" >Número X</td>
+                <td class="n2" ondblclick = "mudaParaBranco(n2)" onclick ="mudaParaVerde(n2)" >Número X</td>
+                <td class="g2" ondblclick = "mudaParaBranco(g2)" onclick ="mudaParaVerde(g2)" >Número X</td>
+                <td class="o2" ondblclick = "mudaParaBranco(o2)" onclick ="mudaParaVerde(o2)" >Número X</td>
+            </tr>  
+            <tr align="center">
+                <td class="b3" ondblclick = "mudaParaBranco(b3)" onclick ="mudaParaVerde(b3)" >Número X</td>
+                <td class="i3" ondblclick = "mudaParaBranco(i3)" onclick ="mudaParaVerde(i3)" >Número X</td>
+                <td class="Não_Gera">♣</td>
+                <td class="g3" ondblclick = "mudaParaBranco(g3)" onclick ="mudaParaVerde(g3)" >Número X</td>
+                <td class="o3" ondblclick = "mudaParaBranco(o3)" onclick ="mudaParaVerde(o3)" >Número X</td>
+            </tr>  
+            <tr align="center">
+                <td class="b4" ondblclick = "mudaParaBranco(b4)" onclick ="mudaParaVerde(b4)" >Número X</td>
+                <td class="i4" ondblclick = "mudaParaBranco(i4)" onclick ="mudaParaVerde(i4)" >Número X</td>
+                <td class="n4" ondblclick = "mudaParaBranco(n4)" onclick ="mudaParaVerde(n4)" >Número X</td>
+                <td class="g4" ondblclick = "mudaParaBranco(g4)" onclick ="mudaParaVerde(g4)" >Número X</td>
+                <td class="o4" ondblclick = "mudaParaBranco(o4)" onclick ="mudaParaVerde(o4)" >Número X</td>
+            </tr>  
+            <tr align="center">
+                <td class="b5" ondblclick = "mudaParaBranco(b5)" onclick ="mudaParaVerde(b5)" >Número X</td>
+                <td class="i5" ondblclick = "mudaParaBranco(i5)" onclick ="mudaParaVerde(i5)" >Número X</td>
+                <td class="n5" ondblclick = "mudaParaBranco(n5)" onclick ="mudaParaVerde(n5)" >Número X</td>
+                <td class="g5" ondblclick = "mudaParaBranco(g5)" onclick ="mudaParaVerde(g5)" >Número X</td>
+                <td class="o5" ondblclick = "mudaParaBranco(o5)" onclick ="mudaParaVerde(o5)" >Número X</td>
+            </tr>            
+        </tbody>
+        <!-- Table body -->
+    </table>
+    <!-- Table  -->
+
+    <button class="Atualiz" onClick="window.location.reload();">Gerar Nova Cartela</button>
+
+</body>
+<script>
+
+function mudaParaVerde(cel) {
+   cel.style.backgroundColor = "#008000";
+}
+
+function mudaParaBranco(cel) {
+   cel.style.backgroundColor = "#FFFFFF";
+}
+
+var a = window.onbeforeunload = function() {
+    return "Deseja atualizar a página?";
+}
+
+//Gerador do B -------------------------------------------
+var b1 = document.querySelector('.b1')
+var b2 = document.querySelector('.b2')
+var b3 = document.querySelector('.b3')
+var b4 = document.querySelector('.b4')
+var b5 = document.querySelector('.b5')
+
+var set = new Set()
+var rdm = null
+
+while(set.size <= 4){
+   
+    random = Math.floor(Math.random() * (15) + 1)  
+   
+    if(!set.has(random)){
+
+        set.add(random)
+        console.log("Novo Número Adicionado: " + random)        
+
+    }
+}
+var lst = Array.from(set)
+
+var lstB1 = lst.slice(0,1,2,3,4)
+var lstB2 = lst.slice(1,2,3,4)
+var lstB3 = lst.slice(2,3,4)
+var lstB4 = lst.slice(3,4)
+var lstB5 = lst.slice(4)
+
+b1.textContent = lstB1
+b2.textContent = lstB2
+b3.textContent = lstB3
+b4.textContent = lstB4
+b5.textContent = lstB5
+
+//Gerador do I -------------------------------------------
+var i1 = document.querySelector('.i1')
+var i2 = document.querySelector('.i2')
+var i3 = document.querySelector('.i3')
+var i4 = document.querySelector('.i4')
+var i5 = document.querySelector('.i5')
+
+var set = new Set()
+var rdm = null
+
+while(set.size <= 4){
+   
+    random = Math.floor(Math.random() * (15) + 16)  
+   
+    if(!set.has(random)){
+
+        set.add(random)
+        console.log("Novo Número Adicionado: " + random)        
+
+    }
+}
+var lst = Array.from(set)
+
+var lstI1 = lst.slice(0,1,2,3,4)
+var lstI2 = lst.slice(1,2,3,4)
+var lstI3 = lst.slice(2,3,4)
+var lstI4 = lst.slice(3,4)
+var lstI5 = lst.slice(4)
+
+i1.textContent = lstI1
+i2.textContent = lstI2
+i3.textContent = lstI3
+i4.textContent = lstI4
+i5.textContent = lstI5
+
+//Gerador do N -------------------------------------------
+var n1 = document.querySelector('.n1')
+var n2 = document.querySelector('.n2')
+var n4 = document.querySelector('.n4')
+var n5 = document.querySelector('.n5')
+
+var set = new Set()
+var rdm = null
+
+while(set.size <= 4){
+   
+    random = Math.floor(Math.random() * (15) + 31)  
+   
+    if(!set.has(random)){
+
+        set.add(random)
+        console.log("Novo Número Adicionado: " + random)        
+
+    }
+}
+var lst = Array.from(set)
+
+var lstN1 = lst.slice(0,1,2,3,4)
+var lstN2 = lst.slice(1,2,3,4)
+var lstN4 = lst.slice(3,4)
+var lstN5 = lst.slice(4)
+
+n1.textContent = lstN1
+n2.textContent = lstN2
+n4.textContent = lstN4
+n5.textContent = lstN5
+
+//Gerador do G
+var g1 = document.querySelector('.g1')
+var g2 = document.querySelector('.g2')
+var g3 = document.querySelector('.g3')
+var g4 = document.querySelector('.g4')
+var g5 = document.querySelector('.g5')
+
+var set = new Set()
+var rdm = null
+
+while(set.size <= 4){
+   
+    random = Math.floor(Math.random() * (15) + 46)  
+   
+    if(!set.has(random)){
+
+        set.add(random)
+        console.log("Novo Número Adicionado: " + random)        
+
+    }
+}
+var lst = Array.from(set)
+
+var lstG1 = lst.slice(0,1,2,3,4)
+var lstG2 = lst.slice(1,2,3,4)
+var lstG3 = lst.slice(2,3,4)
+var lstG4 = lst.slice(3,4)
+var lstG5 = lst.slice(4)
+
+g1.textContent = lstG1
+g2.textContent = lstG2
+g3.textContent = lstG3
+g4.textContent = lstG4
+g5.textContent = lstG5
+
+//Gerador do O
+var o1 = document.querySelector('.o1')
+var o2 = document.querySelector('.o2')
+var o3 = document.querySelector('.o3')
+var o4 = document.querySelector('.o4')
+var o5 = document.querySelector('.o5')
+
+var set = new Set()
+var rdm = null
+
+while(set.size <= 4){
+   
+    random = Math.floor(Math.random() * (15) + 61)  
+   
+    if(!set.has(random)){
+
+        set.add(random)
+        console.log("Novo Número Adicionado: " + random)        
+
+    }
+}
+var lst = Array.from(set)
+
+var lstO1 = lst.slice(0,1,2,3,4)
+var lstO2 = lst.slice(1,2,3,4)
+var lstO3 = lst.slice(2,3,4)
+var lstO4 = lst.slice(3,4)
+var lstO5 = lst.slice(4)
+
+o1.textContent = lstO1
+o2.textContent = lstO2
+o3.textContent = lstO3
+o4.textContent = lstO4
+o5.textContent = lstO5
+
+</script>
+
+<style>
+h1{
+    color: rgb(33, 19, 95);
+}
+thead{
+    font-size: 30px;
+    color: rgb(253, 253, 253);
+    background-color: rgb(0, 0, 0);
+}
+
+tbody{
+    font-size: 30px;
+}
+.Não_Gera{
+    color: rgb(8, 112, 26);
+    font-family: 'Lucida Sans';
+    font-weight: bold;
+}
+.Atualiz{
+    color: rgb(55, 35, 170);
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 15px;
+}
+
+</style>
+
+</html>
